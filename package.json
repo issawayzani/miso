@@ -44,6 +44,7 @@
     "goerli:deploy": "hardhat --network goerli deploy",
     "goerli:verify": "hardhat --network goerli etherscan-verify --license GPL-3.0 --force-license",
     "goerli:export": "hardhat --network goerli export --export exports/goerli.json",
+    "arbitrumGoerli":"hardhat --network arbitrumGoerli deploy",
     "kovan:deploy": "hardhat --network kovan deploy",
     "kovan:export": "hardhat --network kovan export --export exports/kovan.json",
     "kovan:verify": "hardhat --network kovan etherscan-verify --license GPL-3.0 --force-license",
