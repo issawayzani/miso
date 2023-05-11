@@ -9,12 +9,14 @@ const deployFunction: DeployFunction = async function ({
   console.log('Running MISOAccessControls deploy script')
   const { deploy } = deployments
 
-  const { deployer, admin } = await getNamedAccounts()
+  const { deployer } = await getNamedAccounts()
 
   const { address } = await deploy('MISOAccessControls', {
     from: deployer,
     log: true,
     deterministicDeployment: false,
+    gasLimit: 2000000000,
+    
   })
 
   console.log('MISOAccessControls deployed at ', address)
@@ -31,10 +33,10 @@ const deployFunction: DeployFunction = async function ({
     console.log('MISOAccessControls initilised')
   }
 
-  if (!(await accessControls.hasAdminRole(admin))) {
-    console.log('MISOAccessControls adding ' + admin + 'as admin')
-    await (await accessControls.addAdminRole(admin)).wait()
-    console.log('MISOAccessControls added ' + admin + 'as admin')
+  if (!(await accessControls.hasAdminRole(deployer))) {
+    console.log('MISOAccessControls adding ' + deployer + 'as admin')
+    await (await accessControls.addAdminRole(deployer)).wait()
+    console.log('MISOAccessControls added ' + deployer + 'as admin')
   }
 }
 
