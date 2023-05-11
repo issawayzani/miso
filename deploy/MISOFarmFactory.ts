@@ -19,7 +19,7 @@ const deployFunction: DeployFunction = async function ({
 
   const { deploy } = deployments
 
-  const { deployer, dev } = await getNamedAccounts()
+  const { deployer } = await getNamedAccounts()
 
   const { address } = await deploy('MISOFarmFactory', {
     from: deployer,
@@ -37,7 +37,7 @@ const deployFunction: DeployFunction = async function ({
     await (
       await farmFactory.initMISOFarmFactory(
         accessControls.address,
-        dev,
+        deployer,
         0, // minimum fee
         0 // token fee
       )
